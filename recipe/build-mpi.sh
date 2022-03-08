@@ -21,7 +21,7 @@ if [[ "$target_platform" == osx-* ]]; then
     fi
 fi
 
-if [[ $cuda_compiler_version == 10.2 ]]; then
+if [[ $cuda_compiler_version == 11.1 ]]; then
     build_with_cuda="--with-cuda --with-ucx=$PREFIX"
 else
     build_with_cuda=""
@@ -164,7 +164,7 @@ if [ ! -z "$build_with_cuda" ]; then
     echo "pml = ^ucx" >> $PREFIX/etc/openmpi-mca-params.conf
     echo "setting the mca osc to ^ucx..."
     echo "osc = ^ucx" >> $PREFIX/etc/openmpi-mca-params.conf
-    
+
     POST_LINK=$PREFIX/bin/.openmpi-post-link.sh
     cp $RECIPE_DIR/post-link.sh $POST_LINK
     chmod +x $POST_LINK
